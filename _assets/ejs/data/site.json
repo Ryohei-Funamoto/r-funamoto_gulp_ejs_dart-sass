@@ -1,0 +1,20 @@
+{
+  "siteInfo": {
+    "name": "サイト名",
+    "siteUrl": "サイトのドメイン"
+  },
+  "pages": {
+    "home": {
+      "name": "ホーム",
+      "description": "トップページの説明",
+      "type": "website",
+      "slug": "/"
+    },
+    "blog": {
+      "name": "ブログ",
+      "description": "ブログページの説明",
+      "type": "article",
+      "slug": "/blog/"
+    }
+  }
+}

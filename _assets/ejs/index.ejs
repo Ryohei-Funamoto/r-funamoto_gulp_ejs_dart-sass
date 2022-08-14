@@ -1,0 +1,14 @@
+<% let pageId='home' ; %>
+
+  <%- include('./common/_header', {pageId: pageId}) %>
+
+    <% console.log(jsonData) %>
+
+      <main class="l-home">
+        <div class="l-container">
+          トップページです
+          <div class="test js-test">テスト</div>
+        </div><!-- /.l-container -->
+      </main><!-- /.l-home -->
+
+      <%- include('./common/_footer', {pageId: pageId}) %>

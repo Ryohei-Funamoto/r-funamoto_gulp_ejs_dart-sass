@@ -1,0 +1,67 @@
+<% let title=(pageId==='home' ) ? jsonData.siteInfo.name : jsonData.pages[pageId].name + ' | ' + jsonData.siteInfo.name
+  %>
+  <% let description=jsonData.pages[pageId].description %>
+    <!DOCTYPE html>
+    <html lang="ja">
+
+    <head
+      prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= jsonData.pages[pageId].type %>: http://ogp.me/ns/<%= jsonData.pages[pageId].type %>#">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="format-detection" content="telephone=no">
+      <title>
+        <%= title %>
+      </title>
+      <!-- SEO -->
+      <meta name="description" content="<%= description %>" />
+      <!-- OGP -->
+      <meta property="og:url" content="<%= jsonData.siteInfo.siteUrl + jsonData.pages[pageId].slug %>" />
+      <meta property="og:type" content="<%= jsonData.pages[pageId].type %>" />
+      <meta property="og:title" content="<%= title %>" />
+      <meta property="og:description" content="<%= description %>" />
+      <meta property="og:site_name" content="<%= jsonData.siteInfo.name %>" />
+      <meta property="og:image" content="サムネイル画像のURL" />
+      <meta name="twitter:card" content="カード種類" />
+      <meta name="twitter:site" content="@ツイッターユーザー名" />
+      <!-- タッチアイコン -->
+      <link rel="apple-touch-icon" sizes="192x192" href="">
+      <link rel="shortcut icon" sizes="192x192" href="">
+      <!-- ファビコン -->
+      <link rel="icon" href="" />
+      <!-- クローラー -->
+      <meta name="robots" content="noindex" />
+      <!-- CSS -->
+      <link rel="stylesheet" href="/css/style.css">
+      <!-- jQuery -->
+      <script src="/js/lib/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>
+      <header class="l-header p-header">
+        <div class="l-container p-header__container">
+          <div class="p-header__inner">
+            <% if (pageId==='home' ) { %>
+              <h1 class="p-header__logo c-logo">サイトタイトル</h1>
+              <% } else { %>
+                <p class="p-header__logo c-logo"><a href="/">サイトタイトル</a></p>
+                <% } %>
+
+                  <nav>
+                    <ul>
+                      <% for (let page in jsonData.pages) { %>
+                        <% if (page===pageId) { %>
+                          <li class="is-current">
+                            <%= jsonData.pages[page].name %>
+                          </li>
+                          <% } else { %>
+                            <li><a href="<%= jsonData.pages[page].slug %>">
+                                <%= jsonData.pages[page].name %>
+                              </a></li>
+                            <% } %>
+                              <% } %>
+                    </ul>
+                  </nav>
+          </div><!-- /.p-header__inner -->
+        </div><!-- /.l-container p-header__container -->
+      </header><!-- /.l-header p-header -->
