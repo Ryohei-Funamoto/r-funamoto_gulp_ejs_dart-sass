@@ -19,6 +19,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-dart-sass": "^1.0.2",
     "gulp-ejs": "^5.1.0",
+    "gulp-group-css-media-queries": "^1.2.2",
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-notify": "^4.0.0",
