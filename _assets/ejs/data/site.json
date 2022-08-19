@@ -1,18 +1,22 @@
 {
   "siteInfo": {
-    "name": "サイト名",
+    "siteName": "サイト名",
     "siteUrl": "サイトのドメイン"
   },
   "pages": {
     "home": {
-      "name": "ホーム",
+      "name": "home",
+      "title": "ホーム",
       "description": "トップページの説明",
+      "ogpImage": "",
       "type": "website",
       "slug": "/"
     },
     "blog": {
-      "name": "ブログ",
+      "name": "blog",
+      "title": "ブログ",
       "description": "ブログページの説明",
+      "ogpImage": "",
       "type": "article",
       "slug": "/blog/"
     }

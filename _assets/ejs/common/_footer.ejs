@@ -3,11 +3,11 @@
     <nav>
       <ul>
         <% for (let page in jsonData.pages) { %>
-          <li><a href="<%= jsonData.pages[page].slug %>"><%= jsonData.pages[page].name %></a></li>
+          <li><a href="<%= jsonData.pages[page].slug %>"><%= jsonData.pages[page].title %></a></li>
           <% } %>
       </ul>
     </nav>
-    <p>&copy;&nbsp;<%= jsonData.siteInfo.name %></p>
+    <p>&copy;&nbsp;<%= jsonData.siteInfo.siteName %></p>
   </div><!-- /.l-container p-footer__container -->
 </footer><!-- /.l-footer p-footer -->
 

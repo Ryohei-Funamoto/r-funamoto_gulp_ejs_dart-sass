@@ -1,5 +1,5 @@
-<% let title=(pageId==='home' ) ? jsonData.siteInfo.name : jsonData.pages[pageId].name + ' | ' + jsonData.siteInfo.name
-  %>
+<% let title=(pageId==='home' ) ? jsonData.siteInfo.siteName : jsonData.pages[pageId].title + ' | ' +
+  jsonData.siteInfo.siteName %>
   <% let description=jsonData.pages[pageId].description %>
     <!DOCTYPE html>
     <html lang="ja">
@@ -20,8 +20,8 @@
       <meta property="og:type" content="<%= jsonData.pages[pageId].type %>" />
       <meta property="og:title" content="<%= title %>" />
       <meta property="og:description" content="<%= description %>" />
-      <meta property="og:site_name" content="<%= jsonData.siteInfo.name %>" />
-      <meta property="og:image" content="サムネイル画像のURL" />
+      <meta property="og:site_name" content="<%= jsonData.siteInfo.siteName %>" />
+      <meta property="og:image" content="<%= jsonData.pages[pageId].ogpImage %>" />
       <meta name="twitter:card" content="カード種類" />
       <meta name="twitter:site" content="@ツイッターユーザー名" />
       <!-- タッチアイコン -->
@@ -42,9 +42,11 @@
         <div class="l-container p-header__container">
           <div class="p-header__inner">
             <% if (pageId==='home' ) { %>
-              <h1 class="p-header__logo c-logo">サイトタイトル</h1>
+              <h1 class="p-header__logo c-logo">
+                <%= jsonData.siteInfo.siteName; %>
+              </h1>
               <% } else { %>
-                <p class="p-header__logo c-logo"><a href="/">サイトタイトル</a></p>
+                <p class="p-header__logo c-logo"><a href="/"><%= jsonData.siteInfo.siteName; %></a></p>
                 <% } %>
 
                   <nav>
@@ -52,11 +54,11 @@
                       <% for (let page in jsonData.pages) { %>
                         <% if (page===pageId) { %>
                           <li class="is-current">
-                            <%= jsonData.pages[page].name %>
+                            <%= jsonData.pages[page].title %>
                           </li>
                           <% } else { %>
                             <li><a href="<%= jsonData.pages[page].slug %>">
-                                <%= jsonData.pages[page].name %>
+                                <%= jsonData.pages[page].title %>
                               </a></li>
                             <% } %>
                               <% } %>
