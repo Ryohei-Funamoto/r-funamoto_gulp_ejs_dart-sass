@@ -18,17 +18,20 @@ const srcPath = {
   'js': assetsBase + '/js/**/*.js',
   'img': assetsBase + '/img/**/*',
   'html': srcBase + '/**/*.html',
-  'ejs': [assetsBase + '/ejs/**/*.ejs', '!' + assetsBase + '/ejs/**/_*.ejs']
+  'ejs': [assetsBase + '/ejs/**/*.ejs', '!' + assetsBase + '/ejs/**/_*.ejs'],
+  'pug': [assetsBase + '/pug/**/*.pug', '!' + assetsBase + '/pug/**/_*.pug']
 };
 
-// 監視ファイル(EJS, JSONデータ)
+// 監視ファイルのパス
 const watchPath = {
-  'ejs': [assetsBase + '/ejs/**/*.ejs', assetsBase + '/ejs/**/*.json']
+  'ejs': [assetsBase + '/ejs/**/*.ejs', assetsBase + '/ejs/**/*.json'],
+  'pug': [assetsBase + '/pug/**/*.pug', assetsBase + '/pug/**/*.json']
 };
 
-// EJSのJSONデータのパス
-const ejsData = {
-  'data': assetsBase + '/ejs/data/site.json'
+// JSONデータのパス
+const jsonDataPath = {
+  'ejs': assetsBase + '/ejs/data/site.json',
+  'pug': assetsBase + '/pug/data/site.json'
 };
 
 // ファイルの吐き出しパス(HTMLサイト)
@@ -37,7 +40,8 @@ const distPath = {
   'js': distBase + '/js/',
   'img': distBase + '/img/',
   'html': distBase + '/',
-  'ejs': distBase + '/'
+  'ejs': distBase + '/',
+  'pug': distBase + '/'
 };
 
 // ファイルの吐き出しパス(WordPressサイト)
@@ -197,8 +201,7 @@ const htmlbeautify = require('gulp-html-beautify');
 const fs = require('fs');
 
 const ejsHTML = () => {
-  const json_path = ejsData.data;
-  const json = JSON.parse(fs.readFileSync(json_path));
+  const json = JSON.parse(fs.readFileSync(jsonDataPath.ejs));
 
   return src(srcPath.ejs)
     .pipe(
