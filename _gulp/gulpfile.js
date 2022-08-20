@@ -24,14 +24,13 @@ const srcPath = {
 
 // 監視ファイルのパス
 const watchPath = {
-  'ejs': [assetsBase + '/ejs/**/*.ejs', assetsBase + '/ejs/**/*.json'],
-  'pug': [assetsBase + '/pug/**/*.pug', assetsBase + '/pug/**/*.json']
+  'ejs': [assetsBase + '/ejs/**/*.ejs', assetsBase + '/data/**/*.json'],
+  'pug': [assetsBase + '/pug/**/*.pug', assetsBase + '/data/**/*.json']
 };
 
 // JSONデータのパス
-const jsonDataPath = {
-  'ejs': assetsBase + '/ejs/data/site.json',
-  'pug': assetsBase + '/pug/data/site.json'
+const dataPath = {
+  'data': assetsBase + '/data/site.json'
 };
 
 // ファイルの吐き出しパス(HTMLサイト)
@@ -196,7 +195,7 @@ const htmlbeautify = require('gulp-html-beautify');
 const fs = require('fs');
 
 const ejsHTML = () => {
-  const json = JSON.parse(fs.readFileSync(jsonDataPath.ejs));
+  const json = JSON.parse(fs.readFileSync(dataPath.data));
 
   return src(srcPath.ejs)
     .pipe(
