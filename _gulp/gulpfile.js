@@ -54,6 +54,7 @@ const serverDistPath = {
  * clean
  */
 const del = require('del');
+
 const delPath = {
   'css': distBase + '/css/**',
   'js': distBase + '/js/**',
@@ -62,7 +63,7 @@ const delPath = {
   // 'wpCss': serverBase + '/css/**',
   // 'wpJs': serverBase + '/js/**',
   // 'wpImg': serverBase + '/img/**'
-}
+};
 const clean = (done) => {
   del(delPath.css, { force: true });
   del(delPath.js, { force: true });
@@ -72,23 +73,24 @@ const clean = (done) => {
   // del(delPath.wpJs, { force: true });
   // del(delPath.wpImg, { force: true });
   done();
-}
+};
 
 /**
  * ブラウザリロード
  */
 const browserSync = require('browser-sync');
+
 const browserSyncOption = {
   server: distBase // HTMLサイトの場合
   // proxy: 'http://dummy.local' // WordPressサイトの場合(Local by Flywheel)
-}
+};
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
-}
+};
 const browserSyncReload = (done) => {
   browserSync.reload();
   done();
-}
+};
 
 /**
  * Sass
@@ -102,7 +104,6 @@ const autoprefixer = require('autoprefixer'); // ベンダープレフィック�
 const cssdeclsort = require('css-declaration-sorter'); // CSSプロパティの順番を設定
 const mmq = require('gulp-merge-media-queries'); // メディアクエリをまとめる
 const sourcemaps = require('gulp-sourcemaps');
-
 
 const cssSass = () => {
   return src(srcPath.scss)
@@ -125,11 +126,12 @@ const cssSass = () => {
     .pipe(sourcemaps.write('./'))
     .pipe(dest(distPath.css)) // コンパイル先(HTML)
     // .pipe(dest(serverDistPath.css)) // コンパイル先(WordPress)
+    .pipe(browserSync.stream())
     .pipe(notify({
       message: 'Sassをコンパイルしました！',
       onLast: true
     }))
-}
+};
 
 /**
  * JavaScript
@@ -138,7 +140,7 @@ const js = () => {
   return src(srcPath.js)
     .pipe(dest(distPath.js)) // HTMLサイトの吐き出し先
   // .pipe(dest(serverDistPath.js)) // WordPressサイトの吐き出し先
-}
+};
 
 /**
  * 画像圧縮
@@ -147,6 +149,7 @@ const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
 const imageminSvgo = require('imagemin-svgo');
+
 const imgImagemin = () => {
   return src(srcPath.img)
     .pipe(
@@ -165,8 +168,7 @@ const imgImagemin = () => {
       ))
     .pipe(dest(distPath.img)) // HTMLサイトの吐き出し先
   // .pipe(dest(serverDistPath.img)) // WordPressサイトの吐き出し先
-}
-
+};
 
 /**
  * HTML
@@ -174,7 +176,7 @@ const imgImagemin = () => {
 const html = () => {
   return src(srcPath.html)
     .pipe(dest(distPath.html))
-}
+};
 
 /**
  * 既存ファイル
@@ -183,7 +185,7 @@ const public_file = () => {
   return src(publicPath.public)
     .pipe(dest(distBase)) // HTMLサイトの吐き出し先
   // .pipe(dest(serverBase)) // WordPressサイトの吐き出し先
-}
+};
 
 /**
  * EJS
@@ -224,7 +226,7 @@ const ejsHTML = () => {
       message: 'HTMLをコンパイルしました！',
       onLast: true
     }))
-}
+};
 
 /**
  * ファイル監視
@@ -239,7 +241,7 @@ const watchFiles = () => {
   watch(srcPath.html, series(html, browserSyncReload))
   watch(publicPath.public, series(public_file, browserSyncReload))
   watch(watchPath.ejs, series(ejsHTML, browserSyncReload))
-}
+};
 
 /**
  * 一度cleanでdistフォルダ内を削除し、最新の状態を吐き出す
