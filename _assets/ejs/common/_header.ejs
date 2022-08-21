@@ -38,7 +38,7 @@
     </head>
 
     <body>
-      <header class="l-header p-header">
+      <header class="<%= (pageId == 'home') ? 'l-header p-header' : 'l-header p-header p-header--sub' %>">
         <div class="l-container p-header__container">
           <div class="p-header__inner">
             <% if (pageId==='home' ) { %>
@@ -46,7 +46,9 @@
                 <%= jsonData.siteInfo.siteName; %>
               </h1>
               <% } else { %>
-                <p class="p-header__logo c-logo"><a href="<%= jsonData.pages.home.slug; %>"><%= jsonData.siteInfo.siteName; %></a></p>
+                <p class="p-header__logo c-logo"><a href="<%= jsonData.pages.home.slug; %>">
+                    <%= jsonData.siteInfo.siteName; %>
+                  </a></p>
                 <% } %>
 
                   <nav>
