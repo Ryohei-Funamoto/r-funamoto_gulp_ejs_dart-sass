@@ -7,7 +7,13 @@
           <% } %>
       </ul>
     </nav>
-    <p>&copy;&nbsp;<%= jsonData.siteInfo.siteName %></p>
+    <p>&copy;&nbsp;2020&nbsp;-
+      <script type="text/javascript" language="JavaScript">
+        current = new Date();
+        document.write(current.getFullYear())
+      </script>
+      <%= jsonData.siteInfo.siteName %>
+    </p>
   </div><!-- /.l-container p-footer__container -->
 </footer><!-- /.l-footer p-footer -->
 
