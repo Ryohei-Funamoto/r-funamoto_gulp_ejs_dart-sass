@@ -46,7 +46,7 @@
                 <%= jsonData.siteInfo.siteName; %>
               </h1>
               <% } else { %>
-                <p class="p-header__logo c-logo"><a href="/"><%= jsonData.siteInfo.siteName; %></a></p>
+                <p class="p-header__logo c-logo"><a href="<%= jsonData.pages.home.slug; %>"><%= jsonData.siteInfo.siteName; %></a></p>
                 <% } %>
 
                   <nav>
