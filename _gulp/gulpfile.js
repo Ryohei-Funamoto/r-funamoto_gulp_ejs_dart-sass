@@ -122,7 +122,7 @@ const cssSass = () => {
     ]))
     .pipe(gcmq()) // メディアクエリをまとめる
     .pipe(dest(distPath.css)) // コンパイル先(HTML)
-    // .pipe(dest(serverDistPath.css, { sourcemaps: './' })) // コンパイル先(WordPress)
+    // .pipe(dest(serverDistPath.css)) // コンパイル先(WordPress)
     .pipe(browserSync.stream())
     .pipe(notify({
       message: 'Sassをコンパイルしました！',
