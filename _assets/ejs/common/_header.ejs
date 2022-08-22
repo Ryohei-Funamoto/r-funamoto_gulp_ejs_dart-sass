@@ -51,8 +51,8 @@
                   </a></p>
                 <% } %>
 
-                  <nav>
-                    <ul>
+                  <nav class="p-header__nav p-gnav">
+                    <ul class="p-gnav__items">
                       <% for (let page in jsonData.pages) { %>
                         <% if (page===pageId) { %>
                           <li class="is-current">
@@ -64,8 +64,8 @@
                               </a></li>
                             <% } %>
                               <% } %>
-                    </ul>
-                  </nav>
+                    </ul><!-- /.p-gnav__items -->
+                  </nav><!-- /.p-header__nav p-gnav -->
           </div><!-- /.p-header__inner -->
         </div><!-- /.l-container p-header__container -->
       </header><!-- /.l-header p-header -->
