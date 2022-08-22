@@ -1,12 +1,12 @@
 <footer class="l-footer p-footer">
   <div class="l-container p-footer__container">
-    <nav>
-      <ul>
+    <nav class="p-footer__nav p-footer-nav">
+      <ul class="p-footer-nav__items">
         <% for (let page in jsonData.pages) { %>
           <li><a href="<%= jsonData.pages[page].slug %>"><%= jsonData.pages[page].title %></a></li>
           <% } %>
-      </ul>
-    </nav>
+      </ul><!-- /.p-footer-nav__items -->
+    </nav><!-- /.p-footer__nav p-footer-nav -->
     <p>&copy;&nbsp;2020&nbsp;-
       <script type="text/javascript" language="JavaScript">
         current = new Date();
