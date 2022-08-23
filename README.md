@@ -5,7 +5,8 @@
 1. ターミナルを起動する。
 2. cdコマンドで_gulpフォルダに移動する。
 3. 「npm i」コマンドを実行し、package-lock.jsonとnode_modulesを生成する。
-4. 「npx gulp」コマンドを実行し、Gulpを起動させる。
+4. 開発時は「npx gulp」コマンドを入力する。
+5. 本番公開時は「npx gulp --production」コマンドを入力する。
 
 ## 注意点
 * 開発フォルダは_assetsです。
@@ -21,7 +22,7 @@
 * 各ファイルでglobalフォルダ内の変数等を使用する場合は、@use "global" as *;の記述が必要です。※相対パスで書く必要はございません。
 * objectフォルダ内には、component, project, utilityフォルダがあります。
 * pageフォルダには、各ページ固有のCSSを定義したファイルを格納します。
-* structureフォルダには、JSライブラリのCSSを格納します。
+* structureフォルダには、JSライブラリ等のCSSを格納します。
 
 ## EJS
 * _assets/ejs/commonフォルダ内には、ヘッダー、フッター等の共通パーツを格納します。
