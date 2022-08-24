@@ -266,7 +266,7 @@ const watchFiles = () => {
   watch(srcPath.scss, series(cssSass, browserSyncReload))
   watch(srcPath.js, series(js, browserSyncReload))
   watch(srcPath.img, series(imgImagemin, browserSyncReload))
-  watch(srcPath.html, series(html, browserSyncReload))
+  // watch(srcPath.html, series(html, browserSyncReload))
   watch(publicPath.public, series(public_file, browserSyncReload))
   watch(watchPath.ejs, series(ejsHTML, browserSyncReload))
 };
