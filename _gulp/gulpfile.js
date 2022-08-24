@@ -33,21 +33,17 @@ const dataPath = {
   'data': assetsBase + '/data/site.json'
 };
 
-// ファイルの吐き出しパス(HTMLサイト)
+// ファイルの吐き出し先パス
 const distPath = {
   'css': distBase + '/css/',
   'js': distBase + '/js/',
   'img': distBase + '/img/',
   'html': distBase + '/',
   'ejs': distBase + '/',
-  'pug': distBase + '/'
-};
-
-// ファイルの吐き出しパス(WordPressサイト)
-const serverDistPath = {
-  'css': serverBase + '/css/',
-  'js': serverBase + '/js/',
-  'img': serverBase + '/img/'
+  'pug': distBase + '/',
+  'wpCss': serverBase + '/css/',
+  'wpJs': serverBase + '/js/',
+  'wpImg': serverBase + '/img/'
 };
 
 // キャッシュクリアの際に読み込むファイルのパス
@@ -145,7 +141,7 @@ const cssSass = () => {
     ]))
     .pipe(gulpif(thisCssGroupMediaQueries, gcmq())) // メディアクエリをまとめる
     .pipe(dest(distPath.css, { sourcemaps: './' })) // コンパイル先(HTML)
-    // .pipe(dest(serverDistPath.css, { sourcemaps: './' })) // コンパイル先(WordPress)
+    // .pipe(dest(distPath.wpCss, { sourcemaps: './' })) // コンパイル先(WordPress)
     .pipe(browserSync.stream())
     .pipe(notify({
       message: 'Sassをコンパイルしました！',
@@ -159,7 +155,7 @@ const cssSass = () => {
 const js = () => {
   return src(srcPath.js)
     .pipe(dest(distPath.js)) // HTMLサイトの吐き出し先
-  // .pipe(dest(serverDistPath.js)) // WordPressサイトの吐き出し先
+  // .pipe(dest(distPath.wpJs)) // WordPressサイトの吐き出し先
 };
 
 /**
@@ -187,7 +183,7 @@ const imgImagemin = () => {
       }
       ))
     .pipe(dest(distPath.img)) // HTMLサイトの吐き出し先
-  // .pipe(dest(serverDistPath.img)) // WordPressサイトの吐き出し先
+  // .pipe(dest(distPath.wpImg)) // WordPressサイトの吐き出し先
 };
 
 /**
