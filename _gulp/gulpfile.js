@@ -50,6 +50,11 @@ const serverDistPath = {
   'img': serverBase + '/img/'
 };
 
+// キャッシュクリアの際に読み込むファイルのパス
+const cachePath = {
+  'html': distBase + '/**/*.html'
+};
+
 // 本番とテストの設定
 const env = process.env.NODE_ENV ? process.env.NODE_ENV.trim() : '';
 
@@ -246,6 +251,18 @@ const ejsHTML = () => {
 };
 
 /**
+ * キャッシュクリア
+ */
+const crypto = require('crypto');
+const hash = crypto.randomBytes(8).toString('hex');
+
+const cacheBusting = () => {
+  return src(cachePath.html)
+    .pipe(replace(/\.(js|css)\?ver/g, '.$1?ver=' + hash))
+    .pipe(dest(distPath.html))
+};
+
+/**
  * ファイル監視
  * ファイルの変更を検知すると、browserSyncReloadでreloadメソッドを呼び出す
  * watch('監視するファイル', 処理)
@@ -267,5 +284,5 @@ const watchFiles = () => {
  */
 module.exports = {
   default: series(series(clean, cssSass, js, imgImagemin, html, ejsHTML, public_file), parallel(watchFiles, browserSyncFunc)),
-  build: series(series(clean, cssSass, js, imgImagemin, html, ejsHTML, public_file))
+  build: series(series(clean, cssSass, js, imgImagemin, html, ejsHTML, public_file, cacheBusting))
 };
