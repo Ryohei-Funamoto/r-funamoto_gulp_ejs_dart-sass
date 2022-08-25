@@ -1,4 +1,4 @@
-# R-Funamoto_Gulp_Dart-Sass_EJS
+# r-funamoto_gulp_dart-sass_ejs
 * 当ファイルはDart Sass, EJS対応のgulpfileです。
 
 ## 手順
