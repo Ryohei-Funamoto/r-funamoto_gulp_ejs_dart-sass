@@ -1,5 +1,5 @@
-# r-funamoto_gulp_dart-sass_ejs
-* 当ファイルはDart Sass, EJS対応のgulpfileです。
+# r-funamoto_gulp_ejs_dart-sass
+* 当ファイルはEJS, Dart Sass対応のgulpfileです。
 
 ## 手順
 1. ターミナルを開きます。
