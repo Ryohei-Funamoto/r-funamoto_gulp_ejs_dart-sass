@@ -245,6 +245,32 @@ const ejsHTML = () => {
 };
 
 /**
+ * Pug
+ */
+const pug = require('gulp-pug');
+
+const pugHTML = () => {
+  const json = JSON.parse(fs.readFileSync(dataPath.data));
+
+  return src(srcPath.pug)
+    .pipe(
+      // エラーが出ても処理を止めない
+      plumber({
+        errorHandler: notify.onError('Error:<%= error.message %>')
+      }))
+    .pipe(
+      pug({
+        locals: json,
+        pretty: true
+      }))
+    .pipe(dest(distPath.pug))
+    .pipe(notify({
+      message: 'HTMLをコンパイルしました！',
+      onLast: true
+    }))
+};
+
+/**
  * キャッシュクリア
  */
 const crypto = require('crypto');
@@ -269,6 +295,7 @@ const watchFiles = () => {
   // watch(srcPath.html, series(html, browserSyncReload))
   watch(publicPath.public, series(public_file, browserSyncReload))
   watch(watchPath.ejs, series(ejsHTML, browserSyncReload))
+  // watch(watchPath.pug, series(pugHTML, browserSyncReload))
 };
 
 /**
