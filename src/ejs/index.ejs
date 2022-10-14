@@ -1,18 +1,19 @@
 <% let pageId='home' ; %>
+  <% let path='./' ; %>
 
-  <%- include('./common/_head', {pageId: pageId}) %>
+    <%- include(path + 'common/_head' , {pageId: pageId}) %>
 
-    <%- include('./common/_header', {pageId: pageId}) %>
+      <%- include(path + 'common/_header' , {pageId: pageId}) %>
 
-      <% console.log(jsonData) %>
+        <% console.log(jsonData) %>
 
-        <div class="l-home">
-          <main>
-            <div class="l-container">
-              トップページです
-              <div class="test">テスト</div>
-            </div><!-- /.l-container -->
-          </main>
-        </div><!-- /.l-home -->
+          <div class="l-home">
+            <main>
+              <div class="l-container">
+                トップページです
+                <div class="test">テスト</div>
+              </div><!-- /.l-container -->
+            </main>
+          </div><!-- /.l-home -->
 
-        <%- include('./common/_footer', {pageId: pageId}) %>
+          <%- include(path + 'common/_footer' , {pageId: pageId}) %>

@@ -18,7 +18,17 @@
       "description": "ブログページの説明",
       "ogpImage": "",
       "type": "article",
-      "slug": "/blog/"
+      "slug": "/blog/",
+      "breadcrumb": [
+        {
+          "path": "/",
+          "label": "ホーム"
+        },
+        {
+          "path": "",
+          "label": "ブログ"
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,15 @@
+<div class="l-breadcrumb p-breadcrumb">
+  <% for (let i in jsonData.pages[pageId].breadcrumb) { %>
+    <% let path=jsonData.pages[pageId].breadcrumb[i].path; let label=jsonData.pages[pageId].breadcrumb[i].label; %>
+      <% if (path==='' ) { %>
+        <span><span class="current-item">
+            <%= label %>
+          </span></span>
+        <% } else { %>
+          <span><a href="<%= path %>">
+              <%= label %>
+            </a></span>
+          &nbsp;&gt;&nbsp;
+          <% } %>
+            <% } %>
+</div><!-- /.l-breadcrumb p-breadcrumb -->
