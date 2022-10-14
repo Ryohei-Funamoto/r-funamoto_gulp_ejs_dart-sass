@@ -1,0 +1,40 @@
+<% let title=(pageId==='home' ) ? jsonData.siteInfo.siteName : jsonData.pages[pageId].title + ' | ' +
+  jsonData.siteInfo.siteName %>
+  <% let description=jsonData.pages[pageId].description %>
+    <!DOCTYPE html>
+    <html lang="ja">
+
+    <head
+      prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= jsonData.pages[pageId].type %>: http://ogp.me/ns/<%= jsonData.pages[pageId].type %>#">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="format-detection" content="telephone=no">
+      <title>
+        <%= title %>
+      </title>
+      <!-- SEO -->
+      <meta name="description" content="<%= description %>" />
+      <!-- OGP -->
+      <meta property="og:url" content="<%= jsonData.siteInfo.siteUrl + jsonData.pages[pageId].slug %>" />
+      <meta property="og:type" content="<%= jsonData.pages[pageId].type %>" />
+      <meta property="og:title" content="<%= title %>" />
+      <meta property="og:description" content="<%= description %>" />
+      <meta property="og:site_name" content="<%= jsonData.siteInfo.siteName %>" />
+      <meta property="og:image" content="<%= jsonData.pages[pageId].ogpImage %>" />
+      <meta name="twitter:card" content="カード種類" />
+      <meta name="twitter:site" content="@ツイッターユーザー名" />
+      <!-- タッチアイコン -->
+      <link rel="apple-touch-icon" sizes="192x192" href="">
+      <link rel="shortcut icon" sizes="192x192" href="">
+      <!-- ファビコン -->
+      <link rel="icon" href="" />
+      <!-- クローラー -->
+      <meta name="robots" content="noindex, nofollow">
+      <!-- CSS -->
+      <link rel="stylesheet" href="/css/style.css?ver">
+      <!-- jQuery -->
+      <script src="/js/lib/jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>

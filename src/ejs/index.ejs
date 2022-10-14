@@ -1,16 +1,18 @@
 <% let pageId='home' ; %>
 
-  <%- include('./common/_header', {pageId: pageId}) %>
+  <%- include('./common/_head', {pageId: pageId}) %>
 
-    <% console.log(jsonData) %>
+    <%- include('./common/_header', {pageId: pageId}) %>
 
-      <div class="l-home">
-        <main>
-          <div class="l-container">
-            トップページです
-            <div class="test">テスト</div>
-          </div><!-- /.l-container -->
-        </main>
-      </div><!-- /.l-home -->
+      <% console.log(jsonData) %>
 
-      <%- include('./common/_footer', {pageId: pageId}) %>
+        <div class="l-home">
+          <main>
+            <div class="l-container">
+              トップページです
+              <div class="test">テスト</div>
+            </div><!-- /.l-container -->
+          </main>
+        </div><!-- /.l-home -->
+
+        <%- include('./common/_footer', {pageId: pageId}) %>
