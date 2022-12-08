@@ -238,7 +238,7 @@ const ejsHTML = () => {
     .pipe(replace(/[\s\S]*?(<!DOCTYPE)/, '$1'))
     .pipe(dest(distPath.ejs))
     .pipe(notify({
-      message: 'HTMLをコンパイルしました！',
+      message: 'EJSをコンパイルしました！',
       onLast: true
     }))
 };
@@ -264,7 +264,7 @@ const pugHTML = () => {
       }))
     .pipe(dest(distPath.pug))
     .pipe(notify({
-      message: 'HTMLをコンパイルしました！',
+      message: 'Pugをコンパイルしました！',
       onLast: true
     }))
 };
